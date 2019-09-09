@@ -142,8 +142,8 @@
                         <li id="products_add"><a href="<?= site_url('products/add'); ?>"><i class="fa fa-circle-o"></i> <?= lang('add_product'); ?></a></li>
                         <li id="products_import"><a href="<?= site_url('products/import'); ?>"><i class="fa fa-circle-o"></i> <?= lang('import_products'); ?></a></li>
                         <li class="divider"></li>
-                        <li id="products_print_barcodes"><a href="<?= site_url('products/print_barcodes'); ?>" data-toggle="ajax"><i class="fa fa-circle-o"></i> <?= lang('print_barcodes'); ?></a></li>
-                        <li id="products_print_labels"><a href="<?= site_url('products/print_labels'); ?>" data-toggle="ajax"><i class="fa fa-circle-o"></i> <?= lang('print_labels'); ?></a></li>
+                        <!-- <li id="products_print_barcodes"><a href="<?= site_url('products/print_barcodes'); ?>" data-toggle="ajax"><i class="fa fa-circle-o"></i> <?= lang('print_barcodes'); ?></a></li> -->
+                        <!-- <li id="products_print_labels"><a href="<?= site_url('products/print_labels'); ?>" data-toggle="ajax"><i class="fa fa-circle-o"></i> <?= lang('print_labels'); ?></a></li> -->
                     </ul>
                 </li>
                 <li class="treeview mm_categories">
@@ -185,7 +185,7 @@
                     </ul>
                 </li>
                 <?php } ?>
-                <li class="treeview mm_gift_cards">
+                <!-- <li class="treeview mm_gift_cards">
                     <a href="#">
                         <i class="fa fa-credit-card"></i>
                         <span><?= lang('gift_cards'); ?></span>
@@ -195,7 +195,7 @@
                         <li id="gift_cards_index"><a href="<?= site_url('gift_cards'); ?>"><i class="fa fa-circle-o"></i> <?= lang('list_gift_cards'); ?></a></li>
                         <li id="gift_cards_add"><a href="<?= site_url('gift_cards/add'); ?>"><i class="fa fa-circle-o"></i> <?= lang('add_gift_card'); ?></a></li>
                     </ul>
-                </li>
+                </li> -->
 
                 <li class="treeview mm_auth mm_customers mm_suppliers">
                     <a href="#">
