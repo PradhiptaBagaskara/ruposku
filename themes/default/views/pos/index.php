@@ -102,7 +102,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="#" data-toggle="control-sidebar" class="sidebar-icon"><i class="fa fa-folder sidebar-icon"></i> Kategori</a>
+                                <a href="#" data-toggle="control-sidebar" class="sidebar-icon"><i class="fa fa-folder sidebar-icon"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -177,7 +177,7 @@
                             </ul>
                         </li>
                         <?php } ?>
-                        <!-- <li class="treeview mm_gift_cards">
+                        <li class="treeview mm_gift_cards">
                             <a href="#">
                                 <i class="fa fa-credit-card"></i>
                                 <span><?= lang('gift_cards'); ?></span>
@@ -187,7 +187,7 @@
                                 <li id="gift_cards_index"><a href="<?= site_url('gift_cards'); ?>"><i class="fa fa-circle-o"></i> <?= lang('list_gift_cards'); ?></a></li>
                                 <li id="gift_cards_add"><a href="<?= site_url('gift_cards/add'); ?>"><i class="fa fa-circle-o"></i> <?= lang('add_gift_card'); ?></a></li>
                             </ul>
-                        </li> -->
+                        </li>
 
                         <li class="treeview mm_auth mm_customers mm_suppliers">
                             <a href="#">
@@ -276,7 +276,7 @@
                             </ul>
                         </li>
                         <?php } ?>
-                        <!-- <li class="treeview mm_gift_cards">
+                        <li class="treeview mm_gift_cards">
                             <a href="#">
                                 <i class="fa fa-credit-card"></i>
                                 <span><?= lang('gift_cards'); ?></span>
@@ -286,7 +286,7 @@
                                 <li id="gift_cards_index"><a href="<?= site_url('gift_cards'); ?>"><i class="fa fa-circle-o"></i> <?= lang('list_gift_cards'); ?></a></li>
                                 <li id="gift_cards_add"><a href="<?= site_url('gift_cards/add'); ?>"><i class="fa fa-circle-o"></i> <?= lang('add_gift_card'); ?></a></li>
                             </ul>
-                        </li> -->
+                        </li>
                         <li class="treeview mm_customers">
                             <a href="#">
                                 <i class="fa fa-users"></i>
@@ -476,7 +476,7 @@
                                         <?php echo $products; ?>
                                     </div>
                                 </div>
-                                <!-- <div class="product-nav">
+                                <div class="product-nav">
                                     <div class="btn-group btn-group-justified">
                                         <div class="btn-group">
                                             <button style="z-index:10002;" class="btn btn-warning pos-tip btn-flat" type="button" id="previous"><i class="fa fa-chevron-left"></i></button>
@@ -488,7 +488,7 @@
                                             <button style="z-index:10004;" class="btn btn-warning pos-tip btn-flat" type="button" id="next"><i class="fa fa-chevron-right"></i></button>
                                         </div>
                                     </div>
-                                </div> -->
+                                </div>
                             </div>
                         </td>
                     </tr>
@@ -496,12 +496,10 @@
             </div>
         </div>
 
-        <aside class="control-sidebar control-sidebar-dark control-sidebar-open" id="categories-list">
+        <aside class="control-sidebar control-sidebar-dark" id="categories-list">
             <div class="tab-content sb">
                 <div class="tab-pane active sb" id="control-sidebar-home-tab">
-                    
                     <div id="filter-categories-con">
-                    <h3>KATEGORI</h3>
                         <input type="text" autocomplete="off" data-list=".control-sidebar-menu" name="filter-categories" id="filter-categories" class="form-control sb col-xs-12 kb-text" placeholder="<?= lang('filter_categories'); ?>" style="margin-bottom: 20px;">
                     </div>
                     <div class="clearfix sb"></div>

@@ -16,7 +16,7 @@
 | environments.
 |
 */
-$config['base_url'] = 'http://simplepos.localhost';
+$config['base_url'] = '';
 
 /*
 |--------------------------------------------------------------------------
