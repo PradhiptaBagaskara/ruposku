@@ -16,7 +16,16 @@
 | environments.
 |
 */
-$config['base_url'] = '';
+// $config['base_url'] = '';
+
+if (php_sapi_name() === 'cli')  {
+	$config['base_url'] = '';
+} else {
+	$config['base_url'] =  ((isset($_SERVER['HTTPS'] )) ? 'https://' : 'http://') 
+							. $_SERVER['SERVER_NAME'] 
+							. (($_SERVER['SERVER_PORT'] != 80 && $_SERVER['SERVER_PORT'] != 443) 
+							? ':' . $_SERVER['SERVER_PORT'] : '');
+}
 
 /*
 |--------------------------------------------------------------------------

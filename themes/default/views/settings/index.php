@@ -24,7 +24,8 @@
                                     <?= lang('language', 'language'); ?>
                                     <?php $available_langs = array(
                                         'arabic' => 'Arabic',
-                                        'english' => 'English'
+                                        'english' => 'English',
+                                        'indonesian' => 'Indonesia'
                                     ); ?>
                                     <?= form_dropdown('language', $available_langs, $settings->language, 'class="form-control tip select2" id="language" required="required" style="width:100%;"'); ?>
                                 </div>

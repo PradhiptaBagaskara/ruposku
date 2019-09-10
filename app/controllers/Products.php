@@ -327,7 +327,7 @@ class Products extends MY_Controller
         if ($this->input->post('code') != $pr_details->code) {
             $this->form_validation->set_rules('code', lang("product_code"), 'is_unique[products.code]');
         }
-        // $this->form_validation->set_rules('code', lang("product_code"), 'trim|min_length[2]|max_length[50]|required|alpha_numeric');
+        $this->form_validation->set_rules('code', lang("product_code"), 'trim|min_length[2]|max_length[50]|required');
         $this->form_validation->set_rules('name', lang("product_name"), 'required');
         $this->form_validation->set_rules('category', lang("category"), 'required');
         $this->form_validation->set_rules('price', lang("product_price"), 'required|is_numeric');
@@ -336,15 +336,15 @@ class Products extends MY_Controller
         $this->form_validation->set_rules('alert_quantity', lang("alert_quantity"), 'is_numeric');
 
         if ($this->form_validation->run() == true) {
-            $gencode = $this->products_model->generateCode($this->input->post('category'), $id, true);
-            if (!$gencode) {
-                $this->session->set_flashdata('error', 'Kategori tidak ditemukan');
-                redirect("products");
-            }
+            // $gencode = $this->products_model->generateCode($this->input->post('category'), $id, true);
+            // if (!$gencode) {
+            //     $this->session->set_flashdata('error', 'Kategori tidak ditemukan');
+            //     redirect("products");
+            // }
 
             $data = array(
                 'type' => $this->input->post('type'),
-                'code' => $gencode,
+                'code' => $this->input->post('code'),
                 'name' => $this->input->post('name'),
                 'category_id' => $this->input->post('category'),
                 'price' => $this->input->post('price'),
@@ -505,7 +505,7 @@ class Products extends MY_Controller
                 }
                 array_shift($arrResult);
 
-                $keys = array('code', 'name', 'cost', 'tax', 'price', 'category');
+                $keys = array('name', 'cost', 'tax', 'price', 'category');
 
                 $final = array();
                 foreach ($arrResult as $key => $value) {
@@ -518,21 +518,25 @@ class Products extends MY_Controller
                 }
 
                 foreach ($final as $csv_pr) {
-                    if ($this->products_model->getProductByCode($csv_pr['code'])) {
-                        $this->session->set_flashdata('error', lang("check_product_code") . " (" . $csv_pr['code'] . "). " . lang("code_already_exist"));
+
+                    $category = $this->site->getCategoryByCode($csv_pr['category']);
+                    $kode = $this->products_model->generateCode($category->id);
+
+                    if ($this->products_model->getProductByCode($kode)) {
+                        $this->session->set_flashdata('error', lang("check_product_code") . " (" . $kode . "). " . lang("code_already_exist"));
                         redirect("products/import");
                     }
                     if (!is_numeric($csv_pr['tax'])) {
                         $this->session->set_flashdata('error', lang("check_product_tax") . " (" . $csv_pr['tax'] . "). " . lang("tax_not_numeric"));
                         redirect("products/import");
                     }
-                    if(! ($category = $this->site->getCategoryByCode($csv_pr['category']))) {
+                    if(!$category){
                         $this->session->set_flashdata('error', lang("check_category") . " (" . $csv_pr['category'] . "). " . lang("category_x_exist"));
                         redirect("products/import");
                     }
                     $data[] = array(
                         'type' => 'standard',
-                        'code' => $csv_pr['code'],
+                        'code' => $kode,
                         'name' => $csv_pr['name'],
                         'cost' => $csv_pr['cost'],
                         'tax' => $csv_pr['tax'],

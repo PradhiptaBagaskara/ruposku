@@ -1337,7 +1337,7 @@ $(document).ready(function() {
             !$(e.target).hasClass('sb') &&
             $('#categories-list').hasClass('control-sidebar-open')
         ) {
-            $('#categories-list').removeClass('control-sidebar-open');
+            // $('#categories-list').removeClass('control-sidebar-open');
         }
     });
 
