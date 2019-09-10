@@ -13,10 +13,10 @@
                         <?php echo form_open_multipart("categories/add", 'class="validation"'); ?>
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <?= lang('code', 'code'); ?>
                                     <?= form_input('code', set_value('code'), 'class="form-control tip" id="code"  required="required"'); ?>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                     <?= lang('name', 'name'); ?>
                                     <?= form_input('name', set_value('name'), 'class="form-control tip" id="name"  required="required"'); ?>

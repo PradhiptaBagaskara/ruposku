@@ -18,6 +18,39 @@ class Products_model extends CI_Model
         return false;
     }
 
+    public function generateCode($catid, $id = null, $edit = false)
+    {
+        if (!$catid) {
+            return;
+        }
+
+        $res = 'P-';
+        $suffix = '';
+        $this->db->select_max('id');
+        $qp = $this->db->get('products');
+        $maxid = $qp->row()->id;
+
+        $this->db->select('code');
+        $this->db->where('id', $catid);
+        $qc = $this->db->get('categories');
+        $catcode = $qc->row()->code;
+
+        if (!$maxid) {
+            $suffix = '1';
+        } else {
+            $maxid = (int) $maxid + 1;
+            $suffix = $maxid;
+        }
+
+        if (!$catcode) return;
+
+        $id = (string) $id;
+        if ($id && $edit) $res .= $catcode.'-'.$id; 
+        else $res .= $catcode.'-'.$suffix;
+
+        return $res;
+    }
+
     public function products_count($category_id = NULL) {
         if ($category_id) {
             $this->db->where('category_id', $category_id);

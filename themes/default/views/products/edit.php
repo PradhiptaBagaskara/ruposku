@@ -23,7 +23,7 @@
                                 </div>
                                 <div class="form-group">
                                     <?= lang('code', 'code'); ?> <?= lang('can_use_barcode'); ?>
-                                    <?= form_input('code', $product->code, 'class="form-control tip" id="code"  required="required"'); ?>
+                                    <?= form_input('code', $product->code, 'class="form-control tip" id="code"  required="required" readonly'); ?>
                                 </div>
                                 <div class="form-group all">
                                     <?= lang("barcode_symbology", "barcode_symbology") ?>
@@ -31,7 +31,9 @@
                                     $bs = array('code25' => 'Code25', 'code39' => 'Code39', 'code128' => 'Code128', 'ean8' => 'EAN8', 'ean13' => 'EAN13', 'upca' => 'UPC-A', 'upce' => 'UPC-E');
                                     echo form_dropdown('barcode_symbology', $bs, set_value('barcode_symbology', $product->barcode_symbology), 'class="form-control select2" id="barcode_symbology" required="required" style="width:100%;"');
                                     ?>
+                                    <input type="hidden" name="barcode_symbology" value="code128">
                                 </div>
+                                
 
                                 <div class="form-group">
                                     <?= lang('category', 'category'); ?>

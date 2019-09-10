@@ -127,13 +127,15 @@
                                     echo form_dropdown('item_addition', $ia, $Settings->item_addition, 'id="item_addition" class="form-control tip select2" required="required" style="width:100%;"');
                                     ?>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group <?=!$categories ? 'has-error' : '' ?>">
                                     <?= lang('default_category', 'default_category') ?>
                                     <?php
                                     $ct[0] = lang('select').' '.lang('default_category');
-                                    foreach ($categories as $catrgory) {
-                                        $ct[$catrgory->id] = $catrgory->name;
-                                    }
+                                    if ($categories) {
+                                        foreach ($categories as $catrgory) {
+                                            $ct[$catrgory->id] = $catrgory->name;
+                                        }
+                                    } else $ct[0] = "Data Kategori belum diisi";
                                     echo form_dropdown('default_category', $ct, $settings->default_category, 'class="form-control select2" style="width:100%;" id="default_category"') ?>
                                 </div>
 

@@ -35,4 +35,21 @@ class Categories_model extends CI_Model
         return FALSE;
     }
 
+    public function generateCode()
+    {
+        $res = 'K';
+        $this->db->select_max('id');
+        $q = $this->db->get('categories');
+        $maxid = $q->row()->id;
+
+        if (!$maxid) {
+            $res .= '1';
+        } else {
+            $maxid = (int) $maxid + 1;
+            $res .= $maxid;
+        }
+
+        return $res;
+    }
+
 }

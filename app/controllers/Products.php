@@ -192,7 +192,7 @@ class Products extends MY_Controller
             redirect('pos');
         }
 
-        $this->form_validation->set_rules('code', lang("product_code"), 'trim|is_unique[products.code]|min_length[2]|max_length[50]|required|alpha_numeric');
+        // $this->form_validation->set_rules('code', lang("product_code"), 'trim|is_unique[products.code]|min_length[2]|max_length[50]|required|alpha_numeric');
         $this->form_validation->set_rules('name', lang("product_name"), 'required');
         $this->form_validation->set_rules('category', lang("category"), 'required');
         $this->form_validation->set_rules('price', lang("product_price"), 'required|is_numeric');
@@ -203,10 +203,15 @@ class Products extends MY_Controller
         $this->form_validation->set_rules('alert_quantity', lang("alert_quantity"), 'is_numeric');
 
         if ($this->form_validation->run() == true) {
+            $gencode = $this->products_model->generateCode($this->input->post('category'));
+            if (!$gencode) {
+                $this->session->set_flashdata('error', 'Kategori tidak ditemukan');
+                redirect("products/add");
+            }
 
             $data = array(
                 'type' => $this->input->post('type'),
-                'code' => $this->input->post('code'),
+                'code' => $gencode,
                 'name' => $this->input->post('name'),
                 'category_id' => $this->input->post('category'),
                 'price' => $this->input->post('price'),
@@ -322,7 +327,7 @@ class Products extends MY_Controller
         if ($this->input->post('code') != $pr_details->code) {
             $this->form_validation->set_rules('code', lang("product_code"), 'is_unique[products.code]');
         }
-        $this->form_validation->set_rules('code', lang("product_code"), 'trim|min_length[2]|max_length[50]|required|alpha_numeric');
+        // $this->form_validation->set_rules('code', lang("product_code"), 'trim|min_length[2]|max_length[50]|required|alpha_numeric');
         $this->form_validation->set_rules('name', lang("product_name"), 'required');
         $this->form_validation->set_rules('category', lang("category"), 'required');
         $this->form_validation->set_rules('price', lang("product_price"), 'required|is_numeric');
@@ -331,11 +336,15 @@ class Products extends MY_Controller
         $this->form_validation->set_rules('alert_quantity', lang("alert_quantity"), 'is_numeric');
 
         if ($this->form_validation->run() == true) {
-
+            $gencode = $this->products_model->generateCode($this->input->post('category'), $id, true);
+            if (!$gencode) {
+                $this->session->set_flashdata('error', 'Kategori tidak ditemukan');
+                redirect("products");
+            }
 
             $data = array(
                 'type' => $this->input->post('type'),
-                'code' => $this->input->post('code'),
+                'code' => $gencode,
                 'name' => $this->input->post('name'),
                 'category_id' => $this->input->post('category'),
                 'price' => $this->input->post('price'),

@@ -46,7 +46,7 @@ class Categories extends MY_Controller
         $this->form_validation->set_rules('name', lang('category_name'), 'required');
 
         if ($this->form_validation->run() == true) {
-            $data = array('code' => $this->input->post('code'), 'name' => $this->input->post('name'));
+            $data = array('code' => $this->categories_model->generateCode(), 'name' => $this->input->post('name'));
 
             if ($_FILES['userfile']['size'] > 0) {
 
